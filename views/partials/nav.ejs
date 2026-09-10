@@ -1,0 +1,53 @@
+<header class="bg-red-500 text-white p-4 shadow-md">
+  <nav class="container mx-auto flex flex-wrap justify-between items-center px-4 gap-2">
+
+    <ul class="flex flex-wrap gap-2 sm:gap-4 justify-center sm:justify-start w-full sm:w-auto">
+
+      <li>
+        <a class="<%= currentPage === 'index' ? 'bg-red-400' : 'hover:bg-red-400' %> py-2 px-2 sm:px-4 rounded transition duration-300 text-sm sm:text-base" href="/">Airbnb</a>
+      </li>
+
+      <% if(isLoggedIn){ %>
+        <% if(user && user.userType==='guest'){ %>
+
+          <li>
+            <a class="<%= currentPage === 'home-list' ? 'bg-red-400' : 'hover:bg-red-400' %> py-2 px-2 sm:px-4 rounded transition duration-300 text-sm sm:text-base" href="/home-list">Homes</a>
+          </li>
+
+          <li>
+            <a class="<%= currentPage === 'favourite-list' ? 'bg-red-400' : 'hover:bg-red-400' %> py-2 px-2 sm:px-4 rounded transition duration-300 text-sm sm:text-base" href="/favourite-list">Favourites</a>
+          </li>
+          
+          <li>
+            <a class="<%= currentPage === 'booking' ? 'bg-red-400' : 'hover:bg-red-400' %> py-2 px-2 sm:px-4 rounded transition duration-300 text-sm sm:text-base" href="/booking">Booking</a>
+          </li>
+        <% }else{ %>
+
+            <li>
+              <a class="<%= currentPage === 'host-home-list' ? 'bg-red-400' : 'hover:bg-red-400' %> py-2 px-2 sm:px-4 rounded transition duration-300 text-sm sm:text-base" href="/host/host-home-list">Host</a>
+            </li>
+
+            <li>
+              <a class="<%= currentPage === 'add-home' ? 'bg-red-400' : 'hover:bg-red-400' %> py-2 px-2 sm:px-4 rounded transition duration-300 text-sm sm:text-base" href="/host/add-home">Add</a>
+            </li>
+
+        <% } %>
+
+      <% } %>
+
+      <li>
+        <% if(!isLoggedIn){ %>
+        <a class="<%= currentPage === 'login' ? 'bg-red-400' : 'hover:bg-red-400' %> py-2 px-2 sm:px-4 rounded transition duration-300 text-sm sm:text-base" href="/login">Login</a>
+        <% } else{ %>
+        <form action="/logout" method="POST" class="inline">
+          <button class="hover:bg-red-400 py-2 px-2 sm:px-4 rounded transition duration-300 text-sm sm:text-base" type="submit">Logout</button>
+        </form>
+        
+          
+
+        <% } %>
+      </li>
+
+    </ul>
+  </nav>
+</header>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("../partials/head") %>
+
+    <body>
+        <%- include("../partials/nav") %>
+
+            <main class="container mx-auto bg-white shadow-lg rounded-lg p-8 mt-10 mb-10 max-w-2xl">
+                <h3 class="text-3xl font-bold text-red-500 text-center mb-8"><%= editing ? "edit" : "register"%>  your home here</h3>
+
+                <form action="/host/<%=editing ? 'edit-home':'add-home' %>" method="POST" enctype="multipart/form-data" class="space-y-4">
+                    <input type="text" name="id" hidden value="<%=editing ?  home._id:'' %>">
+                    <input type="text" name="houseName" placeholder="enter home name" value="<%=editing ?  home.houseName:'' %>"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                        required />
+                    <input type="number" name="pricePerNight" placeholder="enter price per night" step="any" min="0" value="<%=editing ? home.pricePerNight:'' %>"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                        required />
+
+                    <input type="text" name="location" placeholder="enter location" 
+                         value="<%=editing ? home.location:'' %>"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                        required />
+
+                    <input type="number" name="rating" placeholder="enter rating (0-5)" min="0" max="5" step="any"
+                        value="<%=editing ? home.rating:'' %>"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                        required />
+
+                    <input type="file" name="photoUrl" accept="image/*"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                        required />
+                        
+                    <textarea  name="description" placeholder="description"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                         ><%=editing ? home.description:'' %></textarea>
+
+                    <input type="submit" value="<%= editing ?  'update home' : 'add home' %>"
+                        class="w-full bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-200">
+
+                </form>
+            </main>
+
+
+    </body>
+
+</html>
