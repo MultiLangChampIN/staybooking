@@ -110,7 +110,7 @@ app.use('/host',hostRouter);
 app.use(errorController.show404)
 
 
-
+const PORT = process.env.PORT || 3000;
 
 mongoose.connect(DB_PATH).then(()=>{
     console.log('connected to mongoose');
