@@ -76,7 +76,7 @@ app.use('/store/uploads',express.static(path.join(rootDir,'uploads')))
 app.use(session({
         secret:"uday pratap at training",
         resave:false,
-        saveUninitialized:true,
+        saveUninitialized:false,
         store:store,
             
 }))
